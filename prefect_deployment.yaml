@@ -1,0 +1,49 @@
+##################################################################### MARKETING PREFECT FLOW ###################################################################
+
+deployments:
+### POWER BI - SCREENSHOT
+- name: Screenshot Monitoring Sales - CS Performances
+  version: 1.0.0
+  tags:
+  - Power BI
+  - Screenshot
+  - Sales
+  description: Power BI Screenshot Automation - Dashboard Sales - Monitoring Sales / CS Performance
+  schedule:
+    # interval: 1600
+    cron: "*/5 6-19 * * *"
+    anchor_date: '2023-11-23T21:57:00+00:00'
+    timezone: UTC
+    active: true
+  entrypoint: ../QUA_PowerBI_Screenshot/main.py:main_screenshot_dashboard
+  parameters:
+      name_screenshot: sales_monitoring_performance
+      url: https://app.powerbi.com/groups/f698bedd-b003-4e03-88d6-1f3172fcca00/reports/468ab23b-ff5c-4065-9e06-7cc78b206411/ReportSection479205621b7146e560c9?experience=power-bi
+  work_pool:
+    job_variables:
+      image: prefecthq/prefect:2-latest
+    name: WP_Tools_PowerBI
+    work_queue_name: Screenshot_PowerBI_Dashboard
+
+- name: Screenshot FlowBank Championship
+  version: 1.0.0
+  tags:
+  - Power BI
+  - Screenshot
+  - Championship
+  description: Power BI Screenshot Automation - Dashboard FlowBank Championship
+  schedule:
+    # interval: 1600
+    cron: "*/20 6-19 * * *"
+    anchor_date: '2023-11-23T21:57:00+00:00'
+    timezone: UTC
+    active: true
+  entrypoint: ../QUA_PowerBI_Screenshot/main.py:main_screenshot_dashboard
+  parameters:
+      name_screenshot: screenshot_championship_2024
+      url: https://app.powerbi.com/groups/8aa3dd48-1add-4fd7-bb51-683231660cc1/reports/118161c3-ae5c-4890-8b7e-ff7e29aadd7e/ReportSectionafad3ffe1306061553e7?experience=power-bi
+  work_pool:
+    job_variables:
+      image: prefecthq/prefect:2-latest
+    name: WP_Tools_PowerBI
+    work_queue_name: Screenshot_PowerBI_Dashboard
